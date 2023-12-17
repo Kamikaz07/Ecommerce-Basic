@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <div className="footer-container">
       <p>2023 Kami Web Store All rights reserverd</p>
-      <p className="icons">
-        <AiFillInstagram />
-        <AiOutlineTwitter />
-      </p>
+      <div className="icons-container">
+        <div className="icons"><AiFillInstagram /></div>
+        <div className="icons"><AiOutlineTwitter /></div>
+      </div>
     </div>
   )
 }
