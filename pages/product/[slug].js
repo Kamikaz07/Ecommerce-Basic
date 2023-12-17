@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-
+import ProductReviewsMarquee from '../../components/ProductReviewsMarquee';
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
+import ReviewsComponent from '../../components/Reviews';
 import { useStateContext } from '../../context/StateContext';
+import { useRouter } from 'next/router';
+import ReviewForm from '../../components/ReviewForm'
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
+  const router = useRouter();
+  const { slug } = router.query;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
@@ -37,18 +42,9 @@ const ProductDetails = ({ product, products }) => {
 
         <div className="product-detail-desc">
           <h1>{name}</h1>
-          <div className="reviews">
-            <div>
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiOutlineStar />
-            </div>
-            <p>
-              (20)
-            </p>
-          </div>
+          
+          <ReviewsComponent productSlug={slug} />
+          
           <h4>Details: </h4>
           <p>{details}</p>
           <p className="price">${price}</p>
@@ -67,6 +63,8 @@ const ProductDetails = ({ product, products }) => {
         </div>
       </div>
 
+      <ProductReviewsMarquee productSlug={slug} />
+      
       <div className="maylike-products-wrapper">
           <h2>You may also like</h2>
           <div className="marquee">
@@ -77,7 +75,9 @@ const ProductDetails = ({ product, products }) => {
             </div>
           </div>
       </div>
+      <ReviewForm/>
     </div>
+    
   )
 }
 
