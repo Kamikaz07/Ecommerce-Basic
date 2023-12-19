@@ -7,6 +7,7 @@ import ReviewsComponent from '../../components/Reviews';
 import { useStateContext } from '../../context/StateContext';
 import { useRouter } from 'next/router';
 import ReviewForm from '../../components/ReviewForm'
+import EmailForm from '../../components/Email';
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
@@ -62,7 +63,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-
+      
       <ProductReviewsMarquee productSlug={slug} />
       
       <div className="maylike-products-wrapper">

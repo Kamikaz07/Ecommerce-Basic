@@ -1,11 +1,14 @@
 import Stripe from 'stripe';
+import { client } from '../../lib/client';
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
+      const customerEmail = req.body.customerEmail;
       const params = {
+        ustomer_email: customerEmail,
         submit_type: 'pay',
         mode: 'payment',
         payment_method_types: ['card'],
@@ -35,13 +38,11 @@ export default async function handler(req, res) {
         }),
         success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/`,
-      }
-
-      // Create Checkout Sessions from body params.
+      };
       const session = await stripe.checkout.sessions.create(params);
-
       res.status(200).json(session);
     } catch (err) {
+      console.error("Erro ao criar sessão do Stripe:", err);
       res.status(err.statusCode || 500).json(err.message);
     }
   } else {
