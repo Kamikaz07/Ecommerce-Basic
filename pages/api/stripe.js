@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { client } from '../../lib/client';
+
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 

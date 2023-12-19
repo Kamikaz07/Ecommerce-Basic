@@ -8,4 +8,3 @@ export { default as Cart } from './Cart';
 export { default as Reviews } from './Reviews';
 export { default as ReviewForm } from './ReviewForm';
 export { default as ProductReviewsMarquee } from './ProductReviewsMarquee';
-export { default as Email} from './Email';
