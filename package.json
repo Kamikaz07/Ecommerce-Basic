@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@babel/core": "^7.17.9",
+    "@babel/core": "^7.26.10",
     "@sanity/client": "^2.23.2",
     "@sanity/image-url": "^1.0.1",
     "@sendgrid/mail": "^8.1.0",
